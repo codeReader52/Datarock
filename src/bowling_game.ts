@@ -32,15 +32,16 @@ export class BowlingGame {
 
         this.stateMachine = new StateMachine<number>(
             {
-                [GameState.FirstBowl]: this.firstBowlRule(),
-                [GameState.SecondBowl]: this.secondBowlRule(),
-                [GameState.FirstBowlAfterSpare]: this.firstBowlAfterSpareRule(),
+                [GameState.FirstBowl]: this.buildFirstBowlStateRule(),
+                [GameState.SecondBowl]: this.buildSecondBowlStateRule(),
+                [GameState.FirstBowlAfterSpare]:
+                    this.buildFirstBowlAfterSpareStateRule(),
                 [GameState.FirstBowlAfterStrike]:
-                    this.firstBowlAfterStrikeRule(),
+                    this.buildFirstBowlAfterStrikeStateRule(),
                 [GameState.FirstBowlAfter2Strikes]:
-                    this.firstBowlAfter2StrikesRule(),
+                    this.buildFirstBowlAfter2StrikesStateRule(),
                 [GameState.SecondBowlAfterStrike]:
-                    this.secondBowlAfterStrikeRule(),
+                    this.buildSecondBowlAfterStrikeStateRule(),
                 [GameState.Finished]: {
                     transition: () => GameState.Finished,
                     effect: () => {}
@@ -102,7 +103,7 @@ export class BowlingGame {
         };
     }
 
-    private firstBowlRule(): StateMachineRule<number> {
+    private buildFirstBowlStateRule(): StateMachineRule<number> {
         return {
             transition: this.withFinishOnMaxFrameTransition((score) =>
                 score < this.maxPins
@@ -118,7 +119,7 @@ export class BowlingGame {
         };
     }
 
-    private secondBowlRule(): StateMachineRule<number> {
+    private buildSecondBowlStateRule(): StateMachineRule<number> {
         return {
             transition: this.withFinishOnMaxFrameTransition((score) =>
                 this.partialFrameScore + score < this.maxPins
@@ -133,7 +134,7 @@ export class BowlingGame {
         };
     }
 
-    private firstBowlAfterSpareRule(): StateMachineRule<number> {
+    private buildFirstBowlAfterSpareStateRule(): StateMachineRule<number> {
         return {
             transition: this.withFinishOnMaxFrameTransition((score) =>
                 score < this.maxPins
@@ -148,7 +149,7 @@ export class BowlingGame {
         };
     }
 
-    private firstBowlAfterStrikeRule(): StateMachineRule<number> {
+    private buildFirstBowlAfterStrikeStateRule(): StateMachineRule<number> {
         return {
             transition: this.withFinishOnMaxFrameTransition((score) =>
                 score < this.maxPins
@@ -163,7 +164,7 @@ export class BowlingGame {
         };
     }
 
-    private firstBowlAfter2StrikesRule(): StateMachineRule<number> {
+    private buildFirstBowlAfter2StrikesStateRule(): StateMachineRule<number> {
         return {
             transition: this.withFinishOnMaxFrameTransition((score) =>
                 score < this.maxPins
@@ -178,7 +179,7 @@ export class BowlingGame {
         };
     }
 
-    private secondBowlAfterStrikeRule(): StateMachineRule<number> {
+    private buildSecondBowlAfterStrikeStateRule(): StateMachineRule<number> {
         return {
             transition: this.withFinishOnMaxFrameTransition((score) =>
                 score + this.partialFrameScore < this.maxPins
