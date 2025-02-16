@@ -4,7 +4,9 @@ I chose the bowling scoring problem (without the optional 10th frame scoring).
 
 ### Modeling
 
-The bowling problem is modelled as a state machine. The image of the state machine is in `states.png` file. The solution is a simple hard-coded implementation of this state machine.
+The bowling problem is modelled as a state machine. The image of the state machine is in `states.png`.
+![file](https://github.com/codeReader52/Datarock/blob/main/states.png)
+The solution is a simple hard-coded implementation of this state machine.
 
 ### Implementation
 
