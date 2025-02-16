@@ -3,10 +3,10 @@ import { StateMachine, StateMachineRule } from './state_machine';
 enum GameState {
     FirstBowl = 'First Bowl Of Frame',
     SecondBowl = 'Second Bowl Of Frame',
-    FirstBowlAfterSpare = 'First Bowl Of Frame Follows A Spare (Double Points)',
-    FirstBowlAfterStrike = 'First Bowl Of Frame Follows A Strike (Double Points)',
-    FirstBowlAfter2Strikes = 'First Bowl Of Frame Follows 2 Strikes (Tripple Points)',
-    SecondBowlAfterStrike = 'Second Bowl Of Frame Follows A Strike (Double Points)',
+    FirstBowlAfterSpare = 'First Bowl Of Frame Following A Spare (Double Points)',
+    FirstBowlAfterStrike = 'First Bowl Of Frame Following A Strike (Double Points)',
+    FirstBowlAfter2Strikes = 'First Bowl Of Frame Following 2 Strikes (Tripple Points)',
+    SecondBowlAfterStrike = 'Second Bowl Of Frame Following A Strike (Double Points)',
     Finished = 'Game Finished'
 }
 
